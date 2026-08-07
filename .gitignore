@@ -50,6 +50,12 @@ web_modules/
 # Optional npm cache directory
 .npm
 
+# Vite build output
+dist/
+
+# Local env files
+.env
+
 # Optional eslint cache
 .eslintcache
 
