@@ -6,7 +6,13 @@ type Account = {
   currency: string;
 };
 
-export function AccountSummary({ accounts }: { accounts: Account[] }) {
+interface AccountSummaryProps {
+  accounts: Account[];
+  onViewAllAccounts: () => void;
+  onViewAccount: (account: Account) => void;
+}
+
+export function AccountSummary({ accounts, onViewAllAccounts, onViewAccount }: AccountSummaryProps) {
   return (
     <section className="panel panel-summary">
       <div className="panel-header">
@@ -14,7 +20,7 @@ export function AccountSummary({ accounts }: { accounts: Account[] }) {
           <p className="eyebrow">Accounts</p>
           <h2>Account summary</h2>
         </div>
-        <button className="button-secondary">View all</button>
+        <button className="button-secondary" onClick={onViewAllAccounts}>View all</button>
       </div>
       <div className="account-list">
         {accounts.map((account) => (
@@ -28,6 +34,11 @@ export function AccountSummary({ accounts }: { accounts: Account[] }) {
                 {account.currency} {account.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
               <p className="text-muted">Available {account.currency} {account.available.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+              <div style={{ marginTop: 10 }}>
+                <button className="button-secondary" onClick={() => onViewAccount(account)}>
+                  View details
+                </button>
+              </div>
             </div>
           </div>
         ))}

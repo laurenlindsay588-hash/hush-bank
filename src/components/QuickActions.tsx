@@ -1,4 +1,11 @@
-export function QuickActions({ actions }: { actions: string[] }) {
+type QuickAction = 'Send money' | 'Pay bill' | 'Deposit check' | 'Freeze card';
+
+interface QuickActionsProps {
+  actions: ReadonlyArray<QuickAction>;
+  onAction: (action: QuickAction) => void;
+}
+
+export function QuickActions({ actions, onAction }: QuickActionsProps) {
   return (
     <section className="panel panel-actions">
       <div className="panel-header">
@@ -9,7 +16,7 @@ export function QuickActions({ actions }: { actions: string[] }) {
       </div>
       <div className="action-grid">
         {actions.map((action) => (
-          <button key={action} className="quick-action">
+          <button key={action} className="quick-action" onClick={() => onAction(action)}>
             {action}
           </button>
         ))}

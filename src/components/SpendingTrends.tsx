@@ -4,7 +4,12 @@ type Trend = {
   color: string;
 };
 
-export function SpendingTrends({ trends }: { trends: Trend[] }) {
+interface SpendingTrendsProps {
+  trends: Trend[];
+  onViewReport?: () => void;
+}
+
+export function SpendingTrends({ trends, onViewReport }: SpendingTrendsProps) {
   const max = Math.max(...trends.map((trend) => trend.amount));
 
   return (
@@ -14,7 +19,7 @@ export function SpendingTrends({ trends }: { trends: Trend[] }) {
           <p className="eyebrow">Insights</p>
           <h2>Spending trends</h2>
         </div>
-        <button className="button-secondary">View report</button>
+        <button className="button-secondary" onClick={onViewReport}>View report</button>
       </div>
       <div className="trend-list">
         {trends.map((trend) => (

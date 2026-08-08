@@ -5,7 +5,7 @@ type Transaction = {
   type: 'credit' | 'debit';
 };
 
-export function RecentTransactions({ transactions }: { transactions: Transaction[] }) {
+export function RecentTransactions({ transactions, onDownload }: { transactions: Transaction[]; onDownload?: () => void }) {
   return (
     <div>
       <div className="panel-header">
@@ -13,7 +13,7 @@ export function RecentTransactions({ transactions }: { transactions: Transaction
           <p className="eyebrow">Activity</p>
           <h2>Recent transactions</h2>
         </div>
-        <button className="button-secondary">Download</button>
+        <button className="button-secondary" onClick={onDownload}>Download</button>
       </div>
       <div className="transactions-list">
         {transactions.map((transaction, index) => (

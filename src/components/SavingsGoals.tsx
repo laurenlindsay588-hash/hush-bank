@@ -5,7 +5,12 @@ type Goal = {
   current: number;
 };
 
-export function SavingsGoals({ goals }: { goals: Goal[] }) {
+interface SavingsGoalsProps {
+  goals: Goal[];
+  onManageGoals?: () => void;
+}
+
+export function SavingsGoals({ goals, onManageGoals }: SavingsGoalsProps) {
   return (
     <section className="panel panel-goals">
       <div className="panel-header">
@@ -13,7 +18,7 @@ export function SavingsGoals({ goals }: { goals: Goal[] }) {
           <p className="eyebrow">Goals</p>
           <h2>Savings goals</h2>
         </div>
-        <button className="button-secondary">Manage goals</button>
+        <button className="button-secondary" onClick={onManageGoals}>Manage goals</button>
       </div>
       <div className="goal-cards">
         {goals.map((goal) => (
