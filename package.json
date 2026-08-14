@@ -10,15 +10,16 @@
     "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
+    "@vercel/connect": "^0.8.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^7.9.0",
     "@typescript-eslint/parser": "^7.9.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^7.1.1",
