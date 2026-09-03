@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import App from './App';
 import './styles/global.css';
 import { AuthProvider, useAuth } from './auth/AuthProvider';
@@ -22,5 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <Root />
     </AuthProvider>
+    <SpeedInsights />
   </React.StrictMode>,
 );
