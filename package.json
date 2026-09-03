@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.115.0",
     "@vercel/connect": "^0.8.0",
     "@vercel/speed-insights": "^2.0.0",
     "react": "^19.2.8",
