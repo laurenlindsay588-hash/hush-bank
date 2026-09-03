@@ -86,12 +86,10 @@ function App() {
   const [goals, setGoals] = useState<Goal[]>(initialGoals);
   const [transactionsState, setTransactions] = useState<Transaction[]>(initialTransactions);
   const auth = useAuth();
-  const [loadingRemote, setLoadingRemote] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       if (!auth?.user) return;
-      setLoadingRemote(true);
       try {
         // Fetch accounts
         const { data: accData, error: accErr } = await supabase
@@ -140,8 +138,6 @@ function App() {
         }
       } catch (err) {
         console.warn('Remote fetch error', err);
-      } finally {
-        setLoadingRemote(false);
       }
     };
 
@@ -260,7 +256,6 @@ function App() {
     (async () => {
       try {
         if (!auth?.user) return;
-        const payload = { title, progress: nextProgress, target: 0, current: Math.round((nextProgress / 100) * 0), user_id: auth.user.id };
         // Try update by title + user_id
         const res = await supabase.from('savings_goals').update({ progress: nextProgress, current: Math.round((nextProgress / 100) * 0) }).eq('user_id', auth.user.id).eq('title', title);
         const data = (res as any).data;
